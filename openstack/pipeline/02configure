@@ -615,6 +615,11 @@ do
                 set -- $@ $svc_ha:$units && cache $@
             done
             ;;
+        --cinder-lvm)
+            assert_min_release queens 'cinder-lvm'
+            MOD_OVERLAYS+=( "cinder-lvm.yaml" )
+            ;;
+
         *)
             echo "ERROR: invalid input '$1'"
             _usage
